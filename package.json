@@ -1,0 +1,17 @@
+{
+    "scripts": {
+        "test": "node test/test-default-map.js"
+    },
+    "description": "Map with default value",
+    "keywords": [
+        "map",
+        "default-value"
+    ],
+    "author": "hoge1e3",
+    "license": "MIT",
+    "repository": "https://github.com/hoge1e3/default-map",
+    "main": "default-map.js",
+    "name": "@hoge1e3/default-map",
+    "type": "module",
+    "version": "1.0.0"
+}
