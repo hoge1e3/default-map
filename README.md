@@ -2,7 +2,7 @@
 
 Map with default value
 
-~~~
+~~~js
 import {DefaultMap} from "@hoge1e3/default-map";
 import * as assert from "assert";
 // Map with default value is 0
@@ -21,5 +21,4 @@ assert.equal(n.get("bar"),"Unknown 'bar'");
 // The value can be overriden;
 n.set("bar","I also know the bar.");
 assert.equal(n.get("bar"),"I also know the bar.");
-
 ~~~
