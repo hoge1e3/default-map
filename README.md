@@ -21,4 +21,31 @@ assert.equal(n.get("bar"),"Unknown 'bar'");
 // The value can be overriden;
 n.set("bar","I also know the bar.");
 assert.equal(n.get("bar"),"I also know the bar.");
+
+// Default value with mutable object, setEmpty should be true
+const o=new DefaultMap<string, string[]>(()=>[], true);
+// o.get("cat") calls o.set("cat",[]) automatically.
+const cats=o.get("cat");
+cats.push("Persian");
+cats.push("Bengal");
+cats.push("Ragdoll");
+const dogs=o.get("dog");
+dogs.push("Bulldog");    
+dogs.push("Chihuahua");    
+// If setEmpty==false, the o.get("cat") will be empty array!
+assert.deepStrictEqual(o.get("cat"), ["Persian","Bengal","Ragdoll"]);
+assert.deepStrictEqual(o.get("dog"), ["Bulldog","Chihuahua"]);
+// If setEmpty==false, o.has("cat") never true until o.set("cat",...) is called 
+assert.ok(o.has("cat"));
+assert.ok(o.has("dog")); 
+assert.ok(!o.has("rabbit"));
 ~~~
+
+# API
+
+- DefaultMap<K,V> extends Map<K,V>
+- new DefaultMap<K,V>(def:V|(key:K)=>V, setEmpty=false)
+   - Create DefaultMap
+      - `def` a default value or function that returns value for given key
+      - `setEmpty` if set to true, when `get(key)` is called and the key is missing, the default value (given by `def`) is set to the key, otherwise, the default value is not set. 
+      - `setEmpty` should be true if the associated value is a mutable object(such as array).

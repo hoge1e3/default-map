@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "test": "node test/test-default-map.js"
+        "test": "npx tsc && node js/test/test-default-map.js"
     },
     "description": "Map with default value",
     "keywords": [
@@ -10,9 +10,15 @@
     "author": "hoge1e3",
     "license": "MIT",
     "repository": "https://github.com/hoge1e3/default-map",
-    "main": "default-map.js",
+    "main": "js/default-map.js",
     "name": "@hoge1e3/default-map",
     "type": "module",
-    "types": "types.d.ts",
-    "version": "1.0.4"
+    "types": "types/default-map.d.ts",
+    "version": "1.0.7",
+    "devDependencies": {
+        "@types/assert": "^1.5.11",
+        "@types/node": "^22.10.1",
+        "assert": "^2.1.0",
+        "typescript": "^5.7.2"
+    }
 }
